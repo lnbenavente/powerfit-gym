@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerFit Club | Centro de Entrenamiento & Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; }
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.88)), 
+                        url('./banner.jpg'), 
+                        url('./banner.jpeg'),
+                        url('./banner.png'),
+                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-gray-100 min-h-screen flex flex-col justify-between">
+
+    <!-- NAVBAR -->
+    <nav class="bg-black/90 border-b border-green-900/40 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#inicio" class="flex items-center space-x-3">
+                <img id="app-logo" src="./logo.jpg" onerror="this.onerror=null; this.src='./logo.png'; if(!this.src) this.src='./logo.jpeg';" alt="PowerFit" class="w-12 h-12 rounded-full object-cover border-2 border-green-500 shadow-md">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-base sm:text-xl font-black tracking-wider text-green-500 uppercase leading-none">POWERFIT</span>
+                        <span id="status-badge" class="hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-zinc-800 text-gray-400 border border-zinc-700">
+                            Cargando...
+                        </span>
+                    </div>
+                    <span class="text-[10px] sm:text-xs font-semibold text-gray-400 tracking-widest uppercase block mt-0.5">CLUB FITNESS & TRAINING</span>
+                </div>
+            </a>
+
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <div id="nav-socials" class="hidden sm:flex items-center space-x-3 border-r border-zinc-800 pr-4"></div>
+                <a id="nav-ws-btn" href="#" target="_blank" class="bg-green-500 hover:bg-green-400 text-black font-extrabold px-4 sm:px-5 py-2 rounded-full flex items-center space-x-2 transition-all transform hover:scale-105 shadow-md text-xs sm:text-sm">
+                    <i class="fab font-bold fa-whatsapp text-base sm:text-lg"></i>
+                    <span>INSCRIBIRME</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="inicio" class="hero-bg py-16 px-4 text-center flex items-center justify-center min-h-[65vh]">
+        <div class="max-w-3xl mx-auto">
+            <span class="bg-green-500/20 text-green-400 border border-green-500/40 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-4">
+                ⚡ Transforma tu cuerpo hoy
+            </span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight mb-4">
+                Entrena sin límites en <span class="text-green-500">PowerFit Club</span>
+            </h1>
+            
+            <p id="txt-modalidades" class="text-gray-300 text-xs sm:text-sm font-semibold tracking-wider uppercase mb-6">
+                🏋️ Equipamiento Pro • Clases Grupales • Personal Trainers
+            </p>
+
+            <p class="text-gray-400 text-sm sm:text-base mb-8 max-w-2xl mx-auto">
+                Planes adaptados a tus objetivos: musculación, pérdida de grasa, rendimiento deportivo y funcional.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#servicios" class="bg-green-500 hover:bg-green-400 text-black font-extrabold px-8 py-3.5 rounded-xl transition-all shadow-lg text-center">
+                    Ver Membresías y Planes
+                </a>
+                <a id="hero-delivery-btn" href="#" target="_blank" class="bg-zinc-900 hover:bg-zinc-800 text-white font-semibold px-8 py-3.5 rounded-xl border border-zinc-700 transition-all text-center">
+                    Consultar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PLANES Y SERVICIOS -->
+    <section id="servicios" class="py-12 px-4 max-w-7xl mx-auto w-full">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-extrabold text-green-500 mb-2">PLANES Y SERVICIOS</h2>
+            <p class="text-gray-400 text-xs sm:text-sm">Selecciona el plan que mejor se adapte a tu rutina e inscríbete directo por WhatsApp</p>
+        </div>
+
+        <div id="category-filters" class="flex flex-wrap justify-center gap-2 mb-8">
+            <button onclick="filterCategory('TODOS', this)" class="cat-btn active bg-green-500 text-black px-4 py-1.5 rounded-full text-xs font-bold transition-all">Todos</button>
+        </div>
+
+        <div id="dishes-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="col-span-full text-center py-12 text-gray-400">
+                <i class="fas fa-spinner fa-spin text-3xl text-green-500 mb-3"></i>
+                <p>Cargando planes en tiempo real...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN Y HORARIO -->
+    <section id="ubicacion" class="py-12 bg-black/50 border-t border-zinc-900 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+                <span class="text-green-500 font-bold text-xs tracking-widest uppercase">Visítanos</span>
+                <h2 class="text-2xl font-bold text-white mt-1 mb-6">Ubicación y Horarios</h2>
+                
+                <div class="space-y-4 text-gray-300 text-sm">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center shrink-0 text-lg">📍</div>
+                        <div>
+                            <h4 class="font-bold text-white">Dirección</h4>
+                            <p id="txt-direccion">Cargando...</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center shrink-0 text-lg">🕒</div>
+                        <div>
+                            <h4 class="font-bold text-white">Horario de Entrenamiento</h4>
+                            <p id="txt-horario">Cargando...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <a id="btn-maps" href="#" target="_blank" 
+                       class="bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-white px-5 py-2.5 rounded-xl font-semibold text-xs inline-flex items-center space-x-2">
+                        <i class="fas fa-map-marked-alt text-green-500"></i>
+                        <span>Cómo llegar en Google Maps</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-full h-64 rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl">
+                <iframe id="iframe-maps" width="100%" height="100%" style="border:0" loading="lazy" allowfullscreen 
+                    src="https://maps.google.com/maps?q=Av.+Arequipa+2450,+Lince,+Lima&output=embed">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-8 border-t border-zinc-900 text-center text-xs text-gray-500">
+        <div id="footer-socials" class="flex justify-center space-x-4 mb-4 text-lg"></div>
+        <p>© 2026 PowerFit Club. Todos los derechos reservados.</p>
+        <p class="mt-1">Lince, Lima, Perú</p>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a id="float-ws" href="#" target="_blank" 
+       class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-400 text-black w-12 h-12 rounded-full flex items-center justify-center shadow-2xl z-50 text-xl transition-transform transform hover:scale-110">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- LÓGICA DE CONEXIÓN APPS SCRIPT CON RESPALDO MULTI-ITEM -->
+    <script>
+        const API_URL = "https://script.google.com/macros/s/AKfycbw0_qf4avzyZloL-h_N75AMHjgJUEV1Coc5AQou-Zmilj18iXV65IC9BhRA1BTVC2hx/exec"; 
+
+        // LISTA DE RESPALDO (FALLBACK) CON 20 PLANES
+        const fallbackDishes = [
+            { id: 1, categoria: 'Membresías', nombre: 'Plan Mensual Full Acceso', descripcion: 'Acceso ilimitado a zona de pesas, cardio y vestidores durante 30 días.', precio: '120.00', imagen: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800', disponible: 'SI', etiqueta: 'Popular' },
+            { id: 2, categoria: 'Membresías', nombre: 'Plan Trimestral Power', descripcion: '3 Meses de acceso total + Evaluación nutricional inicial sin costo.', precio: '320.00', imagen: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800', disponible: 'SI', etiqueta: 'Oferta' },
+            { id: 3, categoria: 'Personalizado', nombre: 'Personal Trainer (12 Sesiones)', descripcion: '12 Sesiones individuales de 1 hora con entrenador certificado.', precio: '350.00', imagen: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800', disponible: 'SI', etiqueta: 'Nuevo' },
+            { id: 4, categoria: 'Clases Grupales', nombre: 'Clases de Spinning (Pack 10)', descripcion: '10 Sesiones de ciclismo de alta intensidad con música en vivo.', precio: '150.00', imagen: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800', disponible: 'SI', etiqueta: 'Popular' },
+            { id: 5, categoria: 'Suplementos', nombre: 'Proteína Whey Gold Standard 2lb', descripcion: 'Proteína aislada de suero de leche ideal para recuperación muscular.', precio: '165.00', imagen: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=800', disponible: 'SI', etiqueta: 'Popular' }
+        ];
+
+        let allDishes = fallbackDishes;
+        let configData = { 
+            whatsapp: "51912345678", 
+            whatsapp_mensaje: "Hola PowerFit, quisiera consultar sobre los planes de entrenamiento.",
+            direccion: "Av. Arequipa 2450, Lince, Lima, Perú", 
+            horario: "Lun - Vie: 6:00 AM - 10:00 PM / Sáb: 7:00 AM - 6:00 PM",
+            modalidad_atencion: "Sala de Pesas • Clases Grupales • Personal Trainer",
+            estado_local: "Abierto",
+            google_maps_url: "https://maps.google.com/?q=Av.+Arequipa+2450,+Lince",
+            facebook: "",
+            instagram: "",
+            tiktok: ""
+        };
+
+        async function loadData() {
+            generateButtons();
+            renderDishes(allDishes);
+            applyConfig();
+
+            if (API_URL && API_URL.startsWith("http") && !API_URL.includes("PEGA_AQUI")) {
+                try {
+                    const resConfig = await fetch(`${API_URL}?sheet=Config`);
+                    if (resConfig.ok) {
+                        const configArr = await resConfig.json();
+                        if (Array.isArray(configArr)) {
+                            configArr.forEach(item => {
+                                if (item.clave && item.valor) configData[item.clave.toLowerCase().trim()] = item.valor;
+                            });
+                            applyConfig();
+                        }
+                    }
+
+                    const resCarta = await fetch(`${API_URL}?sheet=Servicios`);
+                    if (resCarta.ok) {
+                        const data = await resCarta.json();
+                        if (Array.isArray(data) && data.length > 0) {
+                            allDishes = data;
+                            generateButtons();
+                            renderDishes(allDishes);
+                        }
+                    }
+                } catch (err) {
+                    console.warn("Error leyendo API. Usando datos precargados.");
+                }
+            }
+        }
+
+        function applyConfig() {
+            document.getElementById('txt-direccion').textContent = configData.direccion || "";
+            document.getElementById('txt-horario').textContent = configData.horario || "";
+            if (configData.modalidad_atencion) {
+                document.getElementById('txt-modalidades').textContent = `🏋️ ${configData.modalidad_atencion}`;
+            }
+
+            if (configData.google_maps_url) {
+                document.getElementById('btn-maps').href = configData.google_maps_url;
+            }
+
+            // BADGE ABIERTO / CERRADO
+            const statusBadge = document.getElementById('status-badge');
+            const estado = (configData.estado_local || "Abierto").toString().trim().toLowerCase();
+            if (estado === "abierto") {
+                statusBadge.className = "hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-green-950 text-green-400 border border-green-600/50";
+                statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse mr-1.5"></span> ABIERTO`;
+            } else {
+                statusBadge.className = "hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-red-950 text-red-400 border border-red-600/50";
+                statusBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-red-500 mr-1.5"></span> CERRADO`;
+            }
+
+            // WHATSAPP GLOBALES
+            const wsNum = (configData.whatsapp || "51912345678").toString().replace(/\D/g, '');
+            const msgPre = encodeURIComponent(configData.whatsapp_mensaje || "Hola, me gustaría información sobre las membresías.");
+            const wsUrl = `https://wa.me/${wsNum}?text=${msgPre}`;
+            
+            document.getElementById('nav-ws-btn').href = wsUrl;
+            document.getElementById('hero-delivery-btn').href = wsUrl;
+            document.getElementById('float-ws').href = wsUrl;
+
+            // REDES SOCIALES
+            const navSocials = document.getElementById('nav-socials');
+            const footerSocials = document.getElementById('footer-socials');
+            navSocials.innerHTML = '';
+            footerSocials.innerHTML = '';
+
+            const networks = [
+                { id: 'facebook', icon: 'fab fa-facebook-f', color: 'hover:text-blue-500' },
+                { id: 'instagram', icon: 'fab fa-instagram', color: 'hover:text-pink-500' },
+                { id: 'tiktok', icon: 'fab fa-tiktok', color: 'hover:text-cyan-400' }
+            ];
+
+            networks.forEach(net => {
+                const url = configData[net.id];
+                if (url && url.toString().startsWith('http')) {
+                    navSocials.innerHTML += `<a href="${url}" target="_blank" class="text-gray-400 ${net.color} transition-colors text-sm p-1"><i class="${net.icon}"></i></a>`;
+                    footerSocials.innerHTML += `<a href="${url}" target="_blank" class="text-gray-400 ${net.color} transition-colors p-2 bg-zinc-900 rounded-full w-9 h-9 flex items-center justify-center border border-zinc-800"><i class="${net.icon}"></i></a>`;
+                }
+            });
+
+            if (allDishes.length > 0) renderDishes(allDishes);
+        }
+
+        function generateButtons() {
+            const container = document.getElementById('category-filters');
+            container.innerHTML = `<button onclick="filterCategory('TODOS', this)" class="cat-btn active bg-green-500 text-black px-4 py-1.5 rounded-full text-xs font-bold transition-all">Todos</button>`;
+            
+            const categories = [...new Set(allDishes.map(d => d.categoria))];
+            categories.forEach(cat => {
+                if(cat) {
+                    const btn = document.createElement('button');
+                    btn.className = "cat-btn bg-zinc-900 hover:bg-zinc-800 text-gray-300 px-4 py-1.5 rounded-full text-xs font-semibold transition-all border border-zinc-800";
+                    btn.textContent = cat;
+                    btn.onclick = (e) => filterCategory(cat, e.target);
+                    container.appendChild(btn);
+                }
+            });
+        }
+
+        function renderDishes(dishes) {
+            const container = document.getElementById('dishes-container');
+            container.innerHTML = '';
+            const activeDishes = dishes.filter(d => (d.disponible || 'SI').toString().toUpperCase() !== 'NO');
+
+            activeDishes.forEach(dish => {
+                const wsNum = (configData.whatsapp || "51912345678").toString().replace(/\D/g, '');
+                const wsText = encodeURIComponent(`Hola PowerFit, quisiera consultar/inscribirme en: *${dish.nombre}* (S/ ${dish.precio}).`);
+                const imgSrc = (dish.imagen && dish.imagen.startsWith('http')) ? dish.imagen : 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800';
+                
+                const badgeHtml = dish.etiqueta ? `<span class="absolute top-3 right-3 bg-green-500 text-black font-extrabold text-[10px] uppercase px-2.5 py-0.5 rounded-full shadow-md z-10">${dish.etiqueta}</span>` : '';
+
+                container.innerHTML += `
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between hover:border-green-500/50 transition-all relative">
+                        <div>
+                            <div class="relative">
+                                ${badgeHtml}
+                                <img src="${imgSrc}" alt="${dish.nombre}" class="w-full h-44 object-cover" onerror="this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800'">
+                            </div>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-1.5">
+                                    <h3 class="font-bold text-base text-white leading-snug">${dish.nombre}</h3>
+                                    <span class="text-green-400 font-extrabold text-base ml-2 shrink-0">S/ ${dish.precio}</span>
+                                </div>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-3">${dish.descripcion || ''}</p>
+                            </div>
+                        </div>
+                        <div class="p-4 pt-0">
+                            <a href="https://wa.me/${wsNum}?text=${wsText}" target="_blank" class="w-full bg-green-500 hover:bg-green-400 text-black font-bold py-2 rounded-xl flex items-center justify-center space-x-2 text-xs transition-colors">
+                                <i class="fab fa-whatsapp text-sm"></i>
+                                <span>Consultar e inscribirme</span>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterCategory(cat, btnElement) {
+            document.querySelectorAll('.cat-btn').forEach(b => {
+                b.classList.remove('bg-green-500', 'text-black');
+                b.classList.add('bg-zinc-900', 'text-gray-300');
+            });
+            btnElement.classList.remove('bg-zinc-900', 'text-gray-300');
+            btnElement.classList.add('bg-green-500', 'text-black');
+            renderDishes(cat === 'TODOS' ? allDishes : allDishes.filter(d => d.categoria === cat));
+        }
+
+        window.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>
